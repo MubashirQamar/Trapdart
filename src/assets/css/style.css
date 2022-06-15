@@ -1,0 +1,274 @@
+:root {
+    --white: #FFF;
+    --primary: #6b4faf;
+    --secondary: #406c85;
+    --dark-secondary: #afd1ea;
+    --gray:#8b8b8b;
+    --bg: #f7fff4;
+}
+
+@font-face {
+    font-family: 'Pixeloperatormono';
+    src: url('../font/Mono.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+body{
+    background-color: var(--bg);
+}
+.banner-section{
+    height: calc(100vh - 71.88px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.banner-section img{
+    width: 350px;
+    margin: auto;
+}
+.banner-section .text{
+    text-align: center;
+    margin-top: 2rem;
+}
+.banner-section .text p{
+    font-size: 25px;
+    color: var(--secondary);
+    font-weight:400;
+}
+.section{
+
+}
+.section-padding{
+    padding: 5rem;
+}
+.flex-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.section-title{
+    background: var(--dark-secondary);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    font-size: 30px;
+    color: var(--secondary);
+    box-shadow: 28px 28px 20px 28px #8080802e;
+}
+.second-title{
+    text-align: center;
+    color: var(--secondary);
+
+}
+.timer-section{
+    width: 230px;
+    margin: 1rem auto;
+    text-align: center;
+    background: var(--primary);
+    color: var(--white);
+    padding: 0 0.5rem;
+}
+.counter{
+    display: flex;
+    justify-content: space-between;
+}
+.counter .inner h3{
+    display: inline;
+    font-size: 40px;
+}
+.counter .inner{
+    margin-bottom: 0.5rem;
+}
+.custom-btn{
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+.secondary-btn{
+    background-color: var(--secondary);
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 400;
+}
+.primary-btn{
+    background-color: var(--primary);
+}
+.white-paper-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.join-section {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+.join-section .custom-input{
+    border-radius: 20px;
+    border: none;
+    margin-left: 3rem;
+    padding: 0 1rem;
+}
+.join-section .custom-input:focus{
+    border: none;
+    outline: none;
+}
+.join-section p{
+    margin-bottom: 0;
+    font-size: 18px;
+}
+.round-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.round-box .inner{
+    width: 300px;
+}
+.nft-image{
+    width: 95%;
+    border-radius: 10px;
+}
+.normal-text{
+    font-size: 20px;
+    color: var(--secondary);
+    font-weight: 500;
+}
+.whitelist .normal-text{
+    margin-bottom: 0;
+}
+.roadmap-div{
+    width: 500px;
+    margin: auto;
+}
+.roadmap-ul{
+    margin-top: 1rem;
+    list-style: square;
+}
+.roadmap-ul li{
+    font-size: 20px;
+    color: var(--secondary);
+    font-weight: 500;
+}
+/* vote css  */
+.text-box{
+    background: var(--dark-secondary);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    box-shadow: 28px 28px 20px 28px #8080802e;
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+.text-box p{
+    font-size: 30px;
+    color: var(--secondary) !important;
+}
+.vote-ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+}
+.vote-ul li{
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+.vote-ul li span{
+    font-size: 20px;
+    color: var(--secondary);
+    font-weight: 500;
+    margin-right: 4rem;
+}
+.vote-ul li .custom-btn{
+    padding: 0.5rem 2rem;
+}
+.normal-a{
+    color: var(--secondary);
+}
+.normal-a:hover{
+    color: var(--primary);
+}
+/* artist  */
+.artist-img{
+    width: 230px;
+    margin-bottom: 1rem;
+}
+
+/* about  */
+.about-page{
+    height: 100% !important;
+    margin-top: 5rem;
+    padding: 0 10rem;
+}
+.about-ol-section{
+    width: 75%;
+    margin: auto;
+    text-align: left;
+}
+.about-ol-section li{
+    font-size: 25px;
+    color: var(--secondary);
+    font-weight:400;
+}
+.about-ol-section ul{
+    padding-left: 3rem;
+    list-style: lower-alpha;
+}
+/* trap css  */
+.buy-ul{
+    list-style: none;
+    padding: 0;
+}
+.buy-ul li div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buy-ul li div .form-control{
+    width: 350px;
+    margin-right: 3rem;
+    border-radius: 25px;
+    height: 50px;
+}
+.buy-ul li div .form-control:focus{
+    box-shadow: none;
+    border-color: var(--primary);
+}
+.allocation-img{
+    width: 70%;
+}
+/* gallery css  */
+.nft-section{
+    width: 75%;
+    margin: auto;
+}
+.nft-box{
+    text-align: center;
+    margin-top: 3rem;
+    width: 90%;
+}
+.nft-box img{
+    border-radius: 10px;
+    width: 100%;
+}
+.box-footer{
+    background: var(--dark-secondary);
+    padding: 1rem 0rem;
+    border-radius: 20px;
+    box-shadow: 28px 28px 20px 28px #8080802e;
+    text-align: center;
+    margin-top: 2rem;
+}
+.box-footer p{
+    color: var(--secondary);
+    font-size: 18px;
+    font-weight: 500;
+}
