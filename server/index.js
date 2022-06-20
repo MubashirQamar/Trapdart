@@ -1,9 +1,13 @@
 const express = require("express");
 const app = express();
+const {ethers} = require("ethers");
 const cors = require("cors");
 const pool = require("./db");
-const {stz_balance} = require('./callRaw');
-const callRaw = require("./callRaw");
+const { balance } = require('./services/callRaw');
+const callRaw = require("./services/callRaw");
+
+require('dotenv').config({path: __dirname+'/.env'})
+
 
 //middleware
 app.use(cors());
@@ -15,12 +19,15 @@ app.use(express.json()); //req.body
 
 app.post("/proposals", async (req, res) => {
   try {
-    const { title , ipfs , description , proposer  } = req.body;
+    const { title , ipfs , description , signature } = req.body;
+    let message = "Add the proposal"
+    let owner_address = process.env.owner_address
 
-    let result = await callRaw(proposer)
+    const recoveredAddress = await ethers.utils.verifyMessage(message,signature)
 
-    if(result == "0"){
-      result = "Insufficient STZ balance"
+
+    if(owner_address != recoveredAddress){
+      result = "Caller is not the Owner"
     }else{
 
     const newproposal= await pool.query(
