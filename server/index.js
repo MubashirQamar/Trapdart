@@ -85,8 +85,10 @@ app.post("/votes/:id", async (req, res) => {
 
       let total_votes
       let total_passed
-
-      if(result == "0" && recoveredAddress!=voter){
+      if(recoveredAddress!=voter){
+        result = "Caller is not the owner"
+      }else{
+      if(result == "0" ){
         result = "Insufficient STZ balance"
       }else{
 
@@ -129,7 +131,7 @@ app.post("/votes/:id", async (req, res) => {
       
       result = newVote.rows[0]
       }
-      }
+      }}
       res.json(result);
       //console.log(req.body)
     } catch (err) {
