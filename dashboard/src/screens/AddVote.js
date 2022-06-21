@@ -71,7 +71,7 @@ function AddVote(){
 
                 method: 'post',
                 url: `${process.env.REACT_APP_BSE_API_URL}/proposals`,
-                body : {
+                data : {
                     title: title,
                     ipfs: imageURL,
                     description : description,

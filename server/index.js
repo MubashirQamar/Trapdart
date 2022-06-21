@@ -23,8 +23,8 @@ app.post("/proposals", async (req, res) => {
     let message = "Add the proposal"
     let owner_address = process.env.owner_address
 
-    const recoveredAddress = await ethers.utils.verifyMessage(message,signature)
-
+    const recoveredAddress = ethers.utils.verifyMessage(message,signature)
+    console.log("recoveredAddress" , recoveredAddress)
 
     if(owner_address != recoveredAddress){
       result = "Caller is not the Owner"
@@ -38,9 +38,9 @@ app.post("/proposals", async (req, res) => {
     }
 
     res.json(result);
-    //console.log(req.body)
+    console.log(req.body)
   } catch (err) {
-    console.error(err.message);
+    console.error("catch post proposals" , err.message);
   }
 });
 
@@ -74,14 +74,19 @@ app.get("/proposals/:id", async (req, res) => {
 
 app.post("/votes/:id", async (req, res) => {
     try {
-      const { voter , vote_status } = req.body;
+      const { voter , vote_status ,signature  } = req.body;
       const { id } = req.params;
+
+      let message = "Casting a vote"
+  
+      const recoveredAddress = ethers.utils.verifyMessage(message,signature)
+
       let result = await callRaw(voter)
 
       let total_votes
       let total_passed
 
-      if(result == "0"){
+      if(result == "0" && recoveredAddress!=voter){
         result = "Insufficient STZ balance"
       }else{
 

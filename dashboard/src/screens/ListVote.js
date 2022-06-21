@@ -22,16 +22,7 @@ function ListVote(){
 
       const [proposalOBJ , setProposalOBJ] = useState([])
 
-      const loadProvider = async () => {
-        try {
-            const web3Modal = new Web3Modal();
-            const connection = await web3Modal.connect();
-            const provider = new ethers.providers.Web3Provider(connection);
-            return provider.getSigner();
-          } catch (e) {
-            console.log("loadProvider default: ", e);
-          }
-    };
+      
 
       const getProposals = async ()=>{
         try {

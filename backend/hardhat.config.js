@@ -57,7 +57,7 @@ module.exports = {
     path: '../frontend/src/contract',
     runOnCompile: true,
     clear: true,
-    only: [':Auction$', ':FallenNFT$',':GuardianNFT$', ':NFTCrowdsale$'],
+    only: [':TrapDart$', ':Vesting$',':Crowdsale$', ':NFT$'],
     flat: true,
     spacing: 2,
     pretty: true,
