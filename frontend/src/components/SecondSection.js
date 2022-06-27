@@ -1,7 +1,17 @@
 import { Container } from "react-bootstrap"
+import axios from 'axios'
+import { useState } from "react"
 
 function SecondSection()
 {
+    const [email,setEmail] = useState('');
+    const [error,setError] = useState('');
+    const [success,setSuccess] = useState('');
+    
+    const Subscribe = async (e) => {
+        e.preventDefault();
+      
+    }
     return <>
     <section className="section">
         <Container>
@@ -22,13 +32,17 @@ function SecondSection()
                 </div>
             </div>
         </div>
+        <form onSubmit={(e) => Subscribe(e)} >
         <div className="text-center white-paper-flex">
         <button className="custom-btn primary-btn">Read Whitepaper</button>
         <div className="join-section">
             <p>Join our mailing list for the latest news</p>
-            <input className="custom-input" placeholder="Your email address"/>
+            <div>
+            <input className="custom-input" value={email} onChange={(e)=>setEmail(e.target.value)} type="email" required placeholder="Your email address"/>
+            </div>
         </div>
         </div>
+        </form>
         </Container>
     </section>
     </>

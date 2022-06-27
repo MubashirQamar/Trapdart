@@ -94,6 +94,10 @@ body{
 .primary-btn{
     background-color: var(--primary);
 }
+.sm-secondary-btn{
+    background-color: var(--secondary);
+    margin-left: 1rem;
+}
 .white-paper-flex{
     display: flex;
     flex-direction: column;

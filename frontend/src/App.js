@@ -25,6 +25,7 @@ function App() {
           <Route path='/about' element={<About/>}/>
           <Route path='/trap' element={<TrapIco/>}/>
           <Route path='/gallery' element={<Gallery/>}/>
+          
         </Routes>
         <Footer/>
       </Router>
