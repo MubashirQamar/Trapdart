@@ -1,0 +1,127 @@
+:root {
+    --white: #FFF;
+    --primary: #6b4faf;
+    --secondary: #406c85;
+    --dark-secondary: #afd1ea;
+    --gray:#8b8b8b;
+    --bg: #f7fff4;
+}
+
+@font-face {
+    font-family: 'Pixeloperatormono';
+    src: url('../font/Mono.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+body{
+    background-color: var(--bg);
+}
+.banner-section{
+    height: calc(100vh - 71.88px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.banner-section img{
+    width: 350px;
+    margin: auto;
+}
+.banner-section .text{
+    text-align: center;
+    margin-top: 2rem;
+}
+.banner-section .text p{
+    font-size: 25px;
+    color: var(--secondary);
+    font-weight:400;
+}
+.section{
+
+}
+.section-padding{
+    padding: 5rem;
+}
+.flex-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.section-title{
+    background: var(--dark-secondary);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    font-size: 30px;
+    color: var(--secondary);
+    box-shadow: 28px 28px 20px 28px #8080802e;
+}
+.second-title{
+    text-align: center;
+    color: var(--secondary);
+
+}
+
+.custom-btn{
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+}
+.secondary-btn{
+    background-color: var(--secondary);
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 400;
+}
+.primary-btn{
+    background-color: var(--primary);
+}
+.sm-secondary-btn{
+    background-color: var(--dark-secondary);
+    margin-left: 1rem;
+    height: 24px;
+    padding: 0 1rem !important;
+    font-size: 15px;
+    color: var(--secondary);
+    font-weight: 500;
+}
+.loader-section{
+    height: calc(100vh - 71.88px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.white-paper-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.join-section {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 2rem;
+}
+.join-section .custom-input{
+    border-radius: 20px;
+    border: none;
+    margin-left: 3rem;
+    padding: 0 1rem;
+}
+.join-section .custom-input:focus{
+    border: none;
+    outline: none;
+}
+.join-section p{
+    margin-bottom: 0;
+    font-size: 18px;
+}
+
+.white-paper-btn{
+    margin: 3rem 0rem;
+}

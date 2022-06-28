@@ -1,0 +1,57 @@
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 9999999;
+    padding: 0 1rem;
+    background-color: var(--white);
+    box-shadow: 8px 8px 5px 8px #8080802e;
+    padding: 0 2rem;
+}
+header .logo-section img{
+    width: 200px;
+}
+.header-ul{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.header-ul li{
+
+}
+.header-ul li a{
+    padding: 0 1rem;
+    text-decoration: none;
+    color: var(--secondary);
+    font-size: 20px;
+    font-weight: 500;
+}
+.header-ul li a:hover{
+    color: var(--primary);
+}
+
+.custom-dropdown:hover>.dropdown-body{
+    display: block;
+}
+.dropdown-body{
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    width: 120px;
+    text-align: center;
+}
+.dropdown-body ul{
+    list-style: none;
+    padding: 0.5rem 0;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+.connect-btn{
+    margin-left: 2rem;
+}
