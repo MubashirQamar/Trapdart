@@ -17,5 +17,5 @@ contract TrapDart is ERC20Burnable  , Ownable {
         _mint(_msgSender(), (initialSuppply/100)*40);
         
     }
-
+    
 }

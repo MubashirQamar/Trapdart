@@ -8,4 +8,5 @@ pragma solidity ^0.8.0;
  */
 interface ICrowdSale {
     function isNFTbuy(address account) external view returns(bool);
+    function _currentRound() external view returns(uint256);
 }

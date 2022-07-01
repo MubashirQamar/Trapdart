@@ -2,6 +2,8 @@ import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 
+import Web3Modal from 'web3modal'
+
 function Home() {
 
   const {
@@ -14,6 +16,7 @@ function Home() {
     active,
     error
   } = useWeb3React();
+  
   const [balance, setBalance] = useState();
 
   useEffect(()=>{

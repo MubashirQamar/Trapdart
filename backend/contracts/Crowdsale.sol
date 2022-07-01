@@ -21,7 +21,7 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
     address payable private _wallet;
     address payable public _manager;
     
-    uint256 public currentRound = 0 ;
+    uint256 private currentRound = 0 ;
 
     // How many token units a buyer gets per wei.
     // The rate is the conversion between wei and the smallest and indivisible token unit.
@@ -57,6 +57,10 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
         _wallet = wallet_;
     }
 
+    function _currentRound() public view override returns(uint256){
+        return currentRound;
+    }
+
     function setTokenAddress(address token_) public onlyOwner{
         require(address(token_) != address(0),"0 address");
         _token = token_ ;
@@ -76,13 +80,12 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
     }
 
     function getRoundPrice(uint256 roundNo) public view returns(uint256 price){
-        uint256 price;
         if(roundNo == 1){
-            price = 0.6 * 10 ** 1;
+            price = 0.6 ether;
         }else if(roundNo == 2){
-            price = 0.8 * 10 ** 1;
+            price = 0.8 ether;
         }else if(roundNo == 3){
-            price = 1 * 10 ** 1;
+            price = 1 ether;
         }else{
             require(false , "incorrect round");
         }
@@ -120,11 +123,11 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
     function getRoundDuration(uint256 roundNo) public view returns(uint256 Time){
         uint256 price;
         if(roundNo == 1){
-            Time = 5 seconds;
+            Time = 300 seconds;
         }else if(roundNo == 2){
-            Time = 5 seconds;
+            Time = 300 seconds;
         }else if(roundNo == 3){
-            Time = 5 seconds;
+            Time = 300 seconds;
         }else{
             require(false , "incorrect round");
         }

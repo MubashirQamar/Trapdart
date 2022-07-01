@@ -1,7 +1,93 @@
 import { memo } from "react";
 import { Col, Container, Row } from "react-bootstrap"
 import { allocation } from "../components/Images";
+
+import {crowdsale_addr} from "../contract/addresses"
+import CrowdsaleABI from "../contract/Crowdsale.json"
+
+import { useWeb3React } from "@web3-react/core";
+import { ethers } from "ethers";
+import { useEffect, useState } from "react";
+
+import Web3Modal from 'web3modal'
+
+
+
 function TrapIco() {
+
+
+    const {
+        connector,
+        library,
+        account,
+        chainId,
+        activate,
+        deactivate,
+        active,
+        errorWeb3Modal
+    } = useWeb3React();
+    const [currentRound , setCurrentRound] = useState("0")
+    const [price , setPrice] = useState("0")
+
+
+    const loadProvider = async () => {
+        try {
+            const web3Modal = new Web3Modal();
+            const connection = await web3Modal.connect();
+            const provider = new ethers.providers.Web3Provider(connection);
+            return provider.getSigner();
+        }
+        catch (e) {
+            console.log("loadProvider: ", e)
+            
+        }
+    }
+   
+    const getRoundPrice = async () => {
+        try {
+
+            let signer = await loadProvider()
+            let NFTCrowdsaleContract = new ethers.Contract(crowdsale_addr, CrowdsaleABI, signer);
+            let round = await NFTCrowdsaleContract._currentRound()
+            let _price = await NFTCrowdsaleContract.getRoundPrice(round)
+            setPrice(_price.toString())
+            setCurrentRound(round.toString())
+
+        } catch (e) {
+            console.log("data", e)
+        }
+    }
+
+    const buyTokens = async () => {
+        try {
+
+            let signer = await loadProvider()
+            let NFTCrowdsaleContract = new ethers.Contract(crowdsale_addr, CrowdsaleABI, signer);
+            let buy = await NFTCrowdsaleContract.buyTokens({value : price})
+            await buy.wait()
+
+        } catch (e) {
+            console.log("data", price)
+        }
+    }
+
+
+    useEffect(()=>{
+        (async ()=>{
+          if(library && account){
+            try {
+                getRoundPrice()
+              
+            }
+            catch(error){
+        
+            }
+            return () => {
+            };
+          }
+        })();
+      }, [library, account, chainId]);
+
 
 
     return <>
@@ -43,7 +129,7 @@ function TrapIco() {
                                 </p>
                                 <div>
                                     <input className="form-control" placeholder="Your ETH address" />
-                                    <button className="custom-btn secondary-btn">Buy</button>
+                                    <button className="custom-btn secondary-btn" onClick={buyTokens}>Buy</button>
                                 </div>
                             </li>
                             <li>
