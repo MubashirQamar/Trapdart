@@ -75,7 +75,7 @@ function ListVote(){
                     <Col lg={4}>
                     <div className="voting-box">
                             <h5 class="section-title">
-                            {arr.description} 
+                            {arr.title} 
                             </h5>
                             <div className="voting-list">
                                 <div className="inner">

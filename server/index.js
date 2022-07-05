@@ -46,7 +46,7 @@ app.post("/proposals", async (req, res) => {
     }
 
     res.json(result);
-    console.log(req.body)
+    console.log("result",result)
   } catch (err) {
     console.error("catch post proposals" , err.message);
   }
@@ -198,6 +198,6 @@ app.delete("/deleteproposals", async (req, res) => {
     }
   });
 
-app.listen(5000, () => {
+app.listen( process.env.PORT || 5000, () => {
   console.log("server has started on port 5000");
 });

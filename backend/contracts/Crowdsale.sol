@@ -123,11 +123,11 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
     function getRoundDuration(uint256 roundNo) public view returns(uint256 Time){
         uint256 price;
         if(roundNo == 1){
-            Time = 300 seconds;
+            Time = 3000 seconds;
         }else if(roundNo == 2){
-            Time = 300 seconds;
+            Time = 3000 seconds;
         }else if(roundNo == 3){
-            Time = 300 seconds;
+            Time = 3000 seconds;
         }else{
             require(false , "incorrect round");
         }
