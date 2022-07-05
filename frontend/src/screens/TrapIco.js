@@ -67,7 +67,7 @@ function TrapIco() {
             await buy.wait()
 
         } catch (e) {
-            console.log("data", price)
+            console.log("data", e)
         }
     }
 
