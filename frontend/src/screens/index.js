@@ -4,6 +4,7 @@ import Artist from './Artist'
 import About from './About'
 import TrapIco from './TrapIco'
 import Gallery from './Gallery'
+import BuyTrap from './BuyTrap'
 
 export{
     Home,
@@ -11,5 +12,6 @@ export{
     Artist,
     About,
     TrapIco,
-    Gallery
+    Gallery,
+    BuyTrap
 }

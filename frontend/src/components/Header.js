@@ -58,6 +58,11 @@ function Header()
                     </div> */}
                     </div>
                 </li>
+                <li>
+                    <NavLink to="/buy-trap">
+                        Buy $TRAP
+                    </NavLink>
+                </li>
                 {/* <li className='position-relative'>
                     <div className='custom-dropdown'>
                     <NavLink to="#">
