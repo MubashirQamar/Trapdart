@@ -6,9 +6,8 @@ import {crowdsale_addr} from "../contract/addresses"
 import CrowdsaleABI from "../contract/Crowdsale.json"
 
 import { useWeb3React } from "@web3-react/core";
+
 import { ethers } from "ethers";
-
-
 import Web3Modal from 'web3modal'
 
 
