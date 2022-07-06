@@ -25,8 +25,8 @@ function App() {
         <Routes>
         <Route path="/" element={<Home/>}  />
         <Route path="/sale" element={<Sale/>}  />
-        <Route path="/burn" element={<Burn/>}  />
-        <Route path="/release" element={<Release/>}  />
+        {/* <Route path="/burn" element={<Burn/>}  />
+        <Route path="/release" element={<Release/>}  /> */}
         <Route path="/add-vote" element={<AddVote/>}  />
         <Route path="/list-vote" element={<ListVote/>}  />
         </Routes>
