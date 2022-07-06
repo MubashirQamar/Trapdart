@@ -36,12 +36,12 @@ function SideBar(props)
             <li className={url == "/sale" ? "active" :''}>
                 <Link to={"/sale"} onClick={closeNav}><i class="fa-solid fa-house-user"></i><span>Sale</span></Link>
             </li>
-            <li className={url == "/burn" ? "active" :''}>
+            {/* <li className={url == "/burn" ? "active" :''}>
                 <Link to={"/burn"} onClick={closeNav}><i class="fa-solid fa-house-user"></i><span>Burn</span></Link>
             </li>
             <li className={url == "/release" ? "active" :''}>
                 <Link to={"/release"} onClick={closeNav}><i class="fa-solid fa-house-user"></i><span>Release nft</span></Link>
-            </li>
+            </li> */}
             <li className={url == "/add-vote" ? "active" :''}>
                 <Link to={"/add-vote"} onClick={closeNav}><i class="fa-solid fa-house-user"></i><span>Add vote</span></Link>
             </li>
