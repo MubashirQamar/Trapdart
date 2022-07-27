@@ -1,5 +1,5 @@
 
- export const crowdsale_addr = "0x8a44f54fe0d83277d93fF79BD2ecF9ff6f55d898"
- export const trapDart_addr = "0x18446EF1371b5592A1b6373f93CaDeA13d1C82b2"
- export const vesting_addr = "0x56B845faf8044B3cBf463a727fa44Ba97041aE10"
- export const nFT_addr = "0x4441ab0dD5981F7e95db505d73dD63163415d14C"
+ export const crowdsale_addr = "0xC0e26bc98c6DA4524FAC681638E83571274a1951"
+ export const trapDart_addr = "0x02004Ca01509BF0D0085D3683f5bbaf1522f0d12"
+ export const vesting_addr = "0x625e51F0D82BE919180bC161A90d9d698137196c"
+ export const nFT_addr = "0x0d264ea49A7823Ac4525919a110f915a559101B3"

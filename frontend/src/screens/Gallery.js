@@ -2,8 +2,9 @@ import { memo } from "react";
 import { Col, Container, Row } from "react-bootstrap"
 import { nft } from "../components/Images";
 
-import {nFT_addr} from "../contract/addresses"
+import {nFT_addr  ,crowdsale_addr} from "../contract/addresses"
 import NFTAbi from "../contract/NFT.json"
+import CrowdsaleABI from "../contract/Crowdsale.json"
 
 import { useWeb3React } from "@web3-react/core";
 import { ethers } from "ethers";
@@ -23,6 +24,8 @@ function Gallery() {
         active,
         errorWeb3Modal
     } = useWeb3React();
+
+    const [currentRound , setCurrentRound] = useState()
    
 
     const loadProvider = async () => {
@@ -38,11 +41,30 @@ function Gallery() {
         }
     }
 
+    const _currentRound = async () => {
+        try {
+
+            let signer = await loadProvider()
+            let NFTCrowdsaleContract = new ethers.Contract(crowdsale_addr, CrowdsaleABI, signer);
+            let start = await NFTCrowdsaleContract._currentRound()
+            setCurrentRound(Number(start.toString()))
+
+        } catch (e) {
+            console.log("data", e)
+        }
+    }
+
     
 
-    const buyNFT = async (type) => {
+    const buyNFT = async (type , round) => {
         let price
         try {
+
+            if(round < 4){
+                if(currentRound != round){
+                    return false
+                }
+            }
 
             let signer = await loadProvider()
             let NFTContract = new ethers.Contract(nFT_addr, NFTAbi, signer);
@@ -62,7 +84,7 @@ function Gallery() {
         (async ()=>{
           if(library && account){
             try {
-                
+                _currentRound()
             }
             catch(error){
         
@@ -95,7 +117,7 @@ function Gallery() {
                                         Availability: 99/100<br/>
                                         Minimum holding: 10,000 TRAP
                                         </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(2)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(2 , 5)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>
@@ -108,7 +130,7 @@ function Gallery() {
                                         Availability: 20/20<br/>
                                         Minimum holding: 50,000 TRAP
                                         </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(1)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(1 , 5)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>
@@ -121,7 +143,7 @@ function Gallery() {
                                         Availability: 990/1000<br/>
                                         Minimum holding: 1,000 TRAP
                                         </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(3)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(3 , 5)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>
@@ -135,7 +157,7 @@ function Gallery() {
                                         Eligibilty: ICO Round 3 Participant<br/>
                                         Minimum holding: 50,000 TRAP
                                         </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4 , 3)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>
@@ -148,7 +170,7 @@ function Gallery() {
                                         Eligibilty: ICO Round 2 Participant<br/>
                                         Minimum holding:  1 TRAP
                                         </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4 , 2)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>
@@ -161,7 +183,7 @@ function Gallery() {
                                         Eligibilty: ICO Round 1 Participant<br/>
                                         Minimum holding: 1 TRAP
                                     </p>
-                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4)}>Mint</button>
+                                        <button className="custom-btn secondary-btn" onClick={()=>buyNFT(4 , 1)}>Mint</button>
                                     </div>
                                 </div>
                             </Col>

@@ -19,6 +19,7 @@ function Header(props) {
                     <div style={{display:"inline-block", backgroundColor:"white", borderRadius:"40px", 
                                     padding:"8px", border:"1px dashed black", marginLeft:"10px",marginTop:"10px", cursor: "pointer"}}
                                     onClick={()=>{
+                                        console.log("kadkf")
                                         connectWallet(activate, props.setErrorMessage);
                                     }}
                                     >Connect Wallet</div>

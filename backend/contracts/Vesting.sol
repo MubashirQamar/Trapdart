@@ -15,12 +15,12 @@ contract Vesting is Ownable , ReentrancyGuard {
     event PaymentReceived(address from, uint256 amount);
 
 
+
     uint256 public startTime;
-    
-    uint256 private oneDay = 5 seconds;
+    uint256 private oneDay = 2 seconds;
     uint256 private totalDays = 730;
 
-    uint256 private _totalShares;
+    uint256 private _totalShares ;
     uint256 public adminID = type(uint256).max; 
     uint256 private run;
     
@@ -42,12 +42,12 @@ contract Vesting is Ownable , ReentrancyGuard {
     uint256 Total = (88888888 *10**18/100) * 10 ;
 
     
-    constructor( uint256 _time ){
+    constructor(uint256 _time){
   
         startTime = block.timestamp + _time;
-
         _idToAddress[adminID] = owner();
         _addressToID[owner()] = adminID;
+        _addPayee(adminID, owner(), 100);
 
     }
 

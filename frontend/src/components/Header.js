@@ -3,9 +3,16 @@ import { logo } from "./Images";
 import '../assets/css/header.css'
 import { memo, useEffect, useRef, useState } from 'react';
 
-function Header()
+import { useWeb3React } from "@web3-react/core";
+import { connectWallet } from "../utils/connectWallet";
+
+function Header(props)
 {
 
+    const {
+        active,
+        activate,
+    } = useWeb3React();
    
     return <header>
         <div className="logo-section">
@@ -63,30 +70,22 @@ function Header()
                         Buy $TRAP
                     </NavLink>
                 </li>
-                {/* <li className='position-relative'>
-                    <div className='custom-dropdown'>
-                    <NavLink to="#">
-                        Buy NFT
-                    </NavLink>
-                    <div className='dropdown-body'>
-                        <ul>
-                            <li>
-                                <Link to={"/nft"} className=''>Round 1</Link>
-                            </li>
-                            <li>
-                                <Link to={"/nft"} className=''>Round 2</Link>
-                            </li>
-                            <li>
-                                <Link to={"/nft"} className=''>Round 3</Link>
-                            </li>
-                        </ul>
-                    </div>
-                    </div>
-                </li> */}
+                
                 <li>
-                    <Link to="#">
-                        Connect Wallet
-                    </Link>
+                {
+                active?
+                <NavLink to="#" >
+                    Connected
+                </NavLink>
+                :
+                <NavLink to="#" onClick={()=>{                                   
+                    connectWallet(activate, props.setErrorMessage);
+                }}>
+                Connect Wallet
+                </NavLink>
+                       
+                                }
+                 
                 </li>
            
             </ul>

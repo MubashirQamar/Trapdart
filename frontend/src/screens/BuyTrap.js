@@ -27,19 +27,22 @@ function BuyTrap() {
     } = useWeb3React();
     const [currentRound , setCurrentRound] = useState("0")
     const [_value , setValue] = useState(0)
-    const [qty, setQty] = useState(1);
+    const [qty, setQty] = useState(0);
+    const [maxBuy, setMaxBuy] = useState(0);
+    const [minBuy, setMinBuy] = useState(0);
+    
     const [price, setPrice] = useState(0);
 
     const increase = () => {
 
-        if (qty < 100000000) {
+        if (qty < 100000000 && price * (qty + 1) <= maxBuy) {
             setQty(qty + 1)
             setValue(price * (qty + 1))
         }
     };
 
     const decrease = () => {
-        if (qty > 1) {
+        if (qty > 1 && price * (qty - 1) >= minBuy) {
             setQty(qty - 1)
             setValue(price * (qty - 1))
         }
@@ -65,9 +68,17 @@ function BuyTrap() {
             let NFTCrowdsaleContract = new ethers.Contract(crowdsale_addr, CrowdsaleABI, signer);
             let round = await NFTCrowdsaleContract._currentRound()
             let _price = await NFTCrowdsaleContract.getRoundPrice(round)
+            let _min = await NFTCrowdsaleContract.minBuy()
+            let _max = await NFTCrowdsaleContract.maxBuy()
+
             let value = ethers.utils.formatEther(_price)
+            let _qty = Math.ceil((Number(ethers.utils.formatEther(_min)))/Number(value))
+            setQty(_qty)
             setPrice(Number(value))
-            setValue(Number(value))
+            setValue(Number(value) * _qty)
+
+            setMinBuy(Number(ethers.utils.formatEther(_min)))
+            setMaxBuy(Number(ethers.utils.formatEther(_max)))
             console.log(Number(value))
             setCurrentRound(round.toString())
 

@@ -8,6 +8,8 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/ICrowdSale.sol";
+
+import "hardhat/console.sol";
 // import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
   
 contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
@@ -81,11 +83,11 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
 
     function getRoundPrice(uint256 roundNo) public view returns(uint256 price){
         if(roundNo == 1){
-            price = 0.6 ether;
+            price = 0.006 ether;
         }else if(roundNo == 2){
-            price = 0.8 ether;
+            price = 0.008 ether;
         }else if(roundNo == 3){
-            price = 1 ether;
+            price = 0.01 ether;
         }else{
             require(false , "incorrect round");
         }
@@ -131,6 +133,18 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
         }else{
             require(false , "incorrect round");
         }
+    }
+
+    function getRoundRemainingDuration(uint256 roundNo) public view returns(uint256){
+        if(block.timestamp < round_endingUnix[roundNo]){
+            return round_endingUnix[roundNo] - block.timestamp;
+        }else{
+        return 0;
+        }
+    }
+
+    function getRoundEndTime(uint256 roundNo) public view returns(uint256){
+        return round_endingUnix[roundNo];
     }
 
     function startNextRound() public onlyOwner {
@@ -219,11 +233,11 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
 
         uint256 rate = 0;
         if(currentRound==1){
-            rate = 0.6 ether;
+            rate = 0.006 ether;
         }else if(currentRound == 2){
-            rate = 0.8 ether;
+            rate = 0.008 ether;
         }else if(currentRound == 3){
-            rate = 1 ether;
+            rate = 0.01 ether;
         }else{
             require(false);
         }
@@ -235,8 +249,10 @@ contract Crowdsale is Ownable, ReentrancyGuard , ICrowdSale {
         }
         // uint256 rate = 1 * 10 ** 18 / getRoundPrice(currentRound);
         // uint256 tokens = _getTokenAmount(weiAmount , rate);
+        console.log("Contract Tokens ::",tokens);
         inc_purchase(currentRound , tokens);
         require(IERC20(_token).balanceOf(address(this)) >= tokens,"buy amount exceeds not enough Tokens remaining");
+        require(weiAmount >= minBuy && weiAmount <= maxBuy,"buy amount out of bound");
         _tokenPurchased = _tokenPurchased + tokens;
 
         // update state
